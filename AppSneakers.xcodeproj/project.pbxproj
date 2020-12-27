@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,15 @@
 		AA1BD36E2598DD2C002C854D /* SneakersDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD36C2598DD2C002C854D /* SneakersDB.swift */; };
 		AA1BD3742598DDF3002C854D /* Brands.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3732598DDF3002C854D /* Brands.swift */; };
 		AA1BD3752598DDF3002C854D /* Brands.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3732598DDF3002C854D /* Brands.swift */; };
+		AA1BD37B2598E258002C854D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD37A2598E258002C854D /* TabBarView.swift */; };
+		AA1BD37C2598E258002C854D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD37A2598E258002C854D /* TabBarView.swift */; };
+		AA1BD3832598E4BE002C854D /* SneakersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3822598E4BE002C854D /* SneakersListView.swift */; };
+		AA1BD3842598E4BE002C854D /* SneakersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3822598E4BE002C854D /* SneakersListView.swift */; };
+		AA1BD38E2598E5A1002C854D /* SneakersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD38D2598E5A1002C854D /* SneakersListViewModel.swift */; };
+		AA1BD38F2598E5A1002C854D /* SneakersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD38D2598E5A1002C854D /* SneakersListViewModel.swift */; };
+		AA1BD3952598E5BB002C854D /* SneakerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3942598E5BB002C854D /* SneakerResponse.swift */; };
+		AA1BD3962598E5BB002C854D /* SneakerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3942598E5BB002C854D /* SneakerResponse.swift */; };
+		AA1BD39D2598F092002C854D /* KingfisherSwiftUIStatic in Frameworks */ = {isa = PBXBuildFile; productRef = AA1BD39C2598F092002C854D /* KingfisherSwiftUIStatic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +73,10 @@
 		AA1BD3612598DB6B002C854D /* BrandsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsListViewModel.swift; sourceTree = "<group>"; };
 		AA1BD36C2598DD2C002C854D /* SneakersDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakersDB.swift; sourceTree = "<group>"; };
 		AA1BD3732598DDF3002C854D /* Brands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brands.swift; sourceTree = "<group>"; };
+		AA1BD37A2598E258002C854D /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		AA1BD3822598E4BE002C854D /* SneakersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakersListView.swift; sourceTree = "<group>"; };
+		AA1BD38D2598E5A1002C854D /* SneakersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakersListViewModel.swift; sourceTree = "<group>"; };
+		AA1BD3942598E5BB002C854D /* SneakerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakerResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1BD39D2598F092002C854D /* KingfisherSwiftUIStatic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,7 +185,9 @@
 		AA1BD33E2598D8DD002C854D /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AA1BD3812598E4B0002C854D /* Sneakers */,
 				AA1BD33F2598D8E9002C854D /* Brands */,
+				AA1BD37A2598E258002C854D /* TabBarView.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -191,8 +207,18 @@
 				AA1BD3562598DAB3002C854D /* APIClient.swift */,
 				AA1BD36C2598DD2C002C854D /* SneakersDB.swift */,
 				AA1BD3732598DDF3002C854D /* Brands.swift */,
+				AA1BD3942598E5BB002C854D /* SneakerResponse.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		AA1BD3812598E4B0002C854D /* Sneakers */ = {
+			isa = PBXGroup;
+			children = (
+				AA1BD3822598E4BE002C854D /* SneakersListView.swift */,
+				AA1BD38D2598E5A1002C854D /* SneakersListViewModel.swift */,
+			);
+			path = Sneakers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +237,9 @@
 			dependencies = (
 			);
 			name = "AppSneakers (iOS)";
+			packageProductDependencies = (
+				AA1BD39C2598F092002C854D /* KingfisherSwiftUIStatic */,
+			);
 			productName = "AppSneakers (iOS)";
 			productReference = AA1BD3042598D8B4002C854D /* AppSneakers.app */;
 			productType = "com.apple.product-type.application";
@@ -302,6 +331,9 @@
 				Base,
 			);
 			mainGroup = AA1BD2F72598D8B2002C854D;
+			packageReferences = (
+				AA1BD39B2598F092002C854D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = AA1BD3052598D8B4002C854D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -352,12 +384,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1BD3832598E4BE002C854D /* SneakersListView.swift in Sources */,
 				AA1BD3282598D8B4002C854D /* ContentView.swift in Sources */,
 				AA1BD36D2598DD2C002C854D /* SneakersDB.swift in Sources */,
+				AA1BD37B2598E258002C854D /* TabBarView.swift in Sources */,
 				AA1BD3742598DDF3002C854D /* Brands.swift in Sources */,
 				AA1BD3412598D8FE002C854D /* BrandsListView.swift in Sources */,
+				AA1BD3952598E5BB002C854D /* SneakerResponse.swift in Sources */,
 				AA1BD3572598DAB3002C854D /* APIClient.swift in Sources */,
 				AA1BD3622598DB6B002C854D /* BrandsListViewModel.swift in Sources */,
+				AA1BD38E2598E5A1002C854D /* SneakersListViewModel.swift in Sources */,
 				AA1BD3262598D8B4002C854D /* AppSneakersApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,12 +402,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1BD3842598E4BE002C854D /* SneakersListView.swift in Sources */,
 				AA1BD3292598D8B4002C854D /* ContentView.swift in Sources */,
 				AA1BD36E2598DD2C002C854D /* SneakersDB.swift in Sources */,
+				AA1BD37C2598E258002C854D /* TabBarView.swift in Sources */,
 				AA1BD3752598DDF3002C854D /* Brands.swift in Sources */,
 				AA1BD3482598DA69002C854D /* BrandsListView.swift in Sources */,
+				AA1BD3962598E5BB002C854D /* SneakerResponse.swift in Sources */,
 				AA1BD3582598DAB3002C854D /* APIClient.swift in Sources */,
 				AA1BD3632598DB6B002C854D /* BrandsListViewModel.swift in Sources */,
+				AA1BD38F2598E5A1002C854D /* SneakersListViewModel.swift in Sources */,
 				AA1BD3272598D8B4002C854D /* AppSneakersApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -750,6 +790,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA1BD39B2598F092002C854D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.15.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA1BD39C2598F092002C854D /* KingfisherSwiftUIStatic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA1BD39B2598F092002C854D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = KingfisherSwiftUIStatic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AA1BD2F82598D8B2002C854D /* Project object */;
 }

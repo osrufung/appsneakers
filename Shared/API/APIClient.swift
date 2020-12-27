@@ -9,13 +9,15 @@ import Foundation
 import Combine
 
 struct APIClient {
+    
     struct Response<T> {
         let value: T
         let response: URLResponse
     }
  
     
-    func run<T: Decodable>(_ request: URLRequest) -> AnyPublisher<Response<T>, Error> {        
+    func run<T: Decodable>(_ request: URLRequest) -> AnyPublisher<Response<T>, Error> {
+        print(request)
         return URLSession.shared
                   .dataTaskPublisher(for: request)
                   .tryMap { result -> Response<T> in

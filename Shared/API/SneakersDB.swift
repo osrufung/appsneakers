@@ -8,22 +8,30 @@
 import Foundation
 import Combine
 
+// Data From https://app.swaggerhub.com/apis-docs/tg4solutions/the-sneaker-database/1.0.0#/
+// API architure based on https://engineering.nodesagency.com/categories/ios/2020/03/16/Combine-networking-with-a-hint-of-swiftUI
+//
 enum SneakersDB {
     static let apiClient = APIClient()
     static let baseURL = URL(string: "https://api.thesneakerdatabase.com/")
 }
 
-enum ApiPath: String {
+enum ApiPath<T>: String {
     case brands = "v1/brands"
+    case sneakers = "v1/sneakers"
+        
 }
 
 extension SneakersDB {
-    static func request(_ path: ApiPath) -> AnyPublisher<BrandsResponse, Error> {
-        guard let url = baseURL?.appendingPathComponent(path.rawValue) else {
+    static func request<T: Decodable>(_ path: ApiPath<T>, type: T.Type) -> AnyPublisher<T, Error> {
+        
+        guard var components = URLComponents(url: baseURL!.appendingPathComponent(path.rawValue), resolvingAgainstBaseURL: true) else {
             fatalError()
         }
+        components.queryItems = [URLQueryItem(name: "limit", value: "10")]
         
-        let request = URLRequest(url: url)
+        let request = URLRequest(url: components.url!)
+        
         return apiClient.run(request)
             .map(\.value)
             .eraseToAnyPublisher()
