@@ -9,31 +9,53 @@ import Foundation
 import Combine
 
 // Data From https://app.swaggerhub.com/apis-docs/tg4solutions/the-sneaker-database/1.0.0#/
-// API architure based on https://engineering.nodesagency.com/categories/ios/2020/03/16/Combine-networking-with-a-hint-of-swiftUI
-//
+
 enum SneakersDB {
-    static let apiClient = APIClient()
-    static let baseURL = URL(string: "https://api.thesneakerdatabase.com/")
+    private static let apiClient = APIClient()
+    private static let baseURL = URL(string: "https://api.thesneakerdatabase.com/")!
+    static let allBrands: BrandRequest = BrandRequest(api: apiClient, baseURL: baseURL)
+    static let allSneakers = SneakerRequest(api: apiClient, baseURL: baseURL)
 }
 
-enum ApiPath<T>: String {
-    case brands = "v1/brands"
-    case sneakers = "v1/sneakers"
-        
+protocol NetworkRequest {
+    associatedtype Resource: Decodable
+    var api: APIClient { get }
+    var baseURL: URL { get }
+    func request(base: URL) -> URLRequest
+    func fetch() -> AnyPublisher<Resource, Error>
 }
 
-extension SneakersDB {
-    static func request<T: Decodable>(_ path: ApiPath<T>, type: T.Type) -> AnyPublisher<T, Error> {
-        
-        guard var components = URLComponents(url: baseURL!.appendingPathComponent(path.rawValue), resolvingAgainstBaseURL: true) else {
-            fatalError()
-        }
-        components.queryItems = [URLQueryItem(name: "limit", value: "10")]
-        
-        let request = URLRequest(url: components.url!)
-        
-        return apiClient.run(request)
+extension NetworkRequest {
+    func fetch() -> AnyPublisher<Resource, Error> {
+        return api.run(request(base: baseURL))
             .map(\.value)
             .eraseToAnyPublisher()
     }
 }
+ 
+struct BrandRequest: NetworkRequest {
+    let api: APIClient
+    let baseURL: URL
+    func request(base: URL) -> URLRequest {
+        let request = URLRequest(url: baseURL.appendingPathComponent("v1/brands"))
+        return request
+    }
+    
+    typealias Resource = BrandsResponse
+}
+
+struct SneakerRequest: NetworkRequest {
+    let api: APIClient
+    let baseURL: URL
+    func request(base: URL) -> URLRequest {
+        guard var components = URLComponents(url: baseURL.appendingPathComponent("v1/sneakers"), resolvingAgainstBaseURL: true) else {
+            fatalError()
+        }
+        components.queryItems = [URLQueryItem(name: "limit", value: "10")]
+        
+        return URLRequest(url: components.url!)
+    }
+    
+    typealias Resource = SneakerResponse
+}
+

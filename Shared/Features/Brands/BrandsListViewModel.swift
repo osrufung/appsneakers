@@ -16,7 +16,7 @@ class BrandsListViewModel: ObservableObject {
     }
     func getBrands() {
         
-        self.cancellationToken = SneakersDB.request(.brands, type: BrandsResponse.self)
+        self.cancellationToken = SneakersDB.allBrands.fetch()
             .mapError({ (error) -> Error in
                 print(error)
                 return error

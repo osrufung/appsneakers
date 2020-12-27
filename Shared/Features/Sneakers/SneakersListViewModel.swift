@@ -16,7 +16,8 @@ class SneakerListViewModel: ObservableObject {
     }
     
     func getSneakers() {
-        cancellationToken = SneakersDB.request(.sneakers, type: SneakerResponse.self)
+        
+        cancellationToken = SneakersDB.allSneakers.fetch()
             .mapError({ (error) -> Error in
                 print(error)
                 return error

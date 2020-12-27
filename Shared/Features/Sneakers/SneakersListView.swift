@@ -22,7 +22,7 @@ struct SneakersListView: View {
                     KFImage(URL(string: image))
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100)                        
+                        .frame(width: 100, height: 100)
 
                 }
             }

@@ -14,7 +14,6 @@ struct APIClient {
         let value: T
         let response: URLResponse
     }
- 
     
     func run<T: Decodable>(_ request: URLRequest) -> AnyPublisher<Response<T>, Error> {
         print(request)
