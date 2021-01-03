@@ -9,20 +9,28 @@ import Foundation
 import Combine
 
 class BrandsListViewModel: ObservableObject {
-    @Published var brands: [String] = []
-    private var cancellationToken: AnyCancellable?
-    init() {
-        getBrands()
+    enum State {
+        case idle
+        case loading
+        case failed(Error)
+        case loaded([String])
     }
+  
+    @Published private(set) var state = State.idle
+    private var cancellationToken: AnyCancellable?
+
     func getBrands() {
-        
+        self.state = .loading
         self.cancellationToken = SneakersDB.allBrands.fetch()
-            .mapError({ (error) -> Error in
-                print(error)
+            .mapError({ (error) -> Error in                
                 return error
             })
-            .sink(receiveCompletion: { _ in }) { value in
-                self.brands = value.results
+            .sink(receiveCompletion: { result in
+                if case .failure(let error) = result {
+                    self.state = .failed(error)
+                }
+            }) { value in
+                self.state = .loaded(value.results.sorted())
             }            
     }
 }

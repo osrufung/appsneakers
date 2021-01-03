@@ -14,8 +14,10 @@ struct TabBarView: View {
                 .tabItem {
                     Label("Brands", systemImage: "applelogo")
                 }
-            SneakersListView()
-                .tabItem { Label("Sneakers", systemImage: "figure.walk") }
+            FavouritesSneakers()
+                .tabItem { Label("Favourites", systemImage: "heart.fill") }
+            AboutView()
+                .tabItem { Label("About", systemImage: "info.circle") }
         }
     }
 }

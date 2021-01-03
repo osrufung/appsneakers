@@ -7,23 +7,35 @@
 
 import Foundation
 import Combine
-
 class SneakerListViewModel: ObservableObject {
-    @Published var sneakers: [Sneaker] = []
+    enum State {
+        case idle
+        case loading
+        case failed(Error)
+        case loaded([Sneaker])
+    }
+   
+    @Published private(set) var state = State.idle
+    
     private var cancellationToken: AnyCancellable?
-    init() {
-        getSneakers()
+    let brand: String
+    
+    init(brand: String) {
+        self.brand = brand
     }
     
     func getSneakers() {
-        
-        cancellationToken = SneakersDB.allSneakers.fetch()
-            .mapError({ (error) -> Error in
-                print(error)
+        state = .loading        
+        cancellationToken = SneakersDB.sneakers(for: brand).fetch()
+            .mapError({ (error) -> Error in                
                 return error
             })
-            .sink(receiveCompletion: { _ in }) { value in
-                self.sneakers = value.results
+            .sink(receiveCompletion: { result in
+                if case .failure(let error) = result {
+                    self.state = .failed(error)
+                }
+            }) { value in
+                self.state = .loaded(value.results)
             }
     }
 }

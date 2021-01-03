@@ -8,12 +8,43 @@
 import SwiftUI
 import Combine
 
-struct BrandsListView: View {
+struct BrandsListView: View {    
+    struct ReloadItem: View {
+        @ObservedObject var viewModel: BrandsListViewModel
+        var body: some View {
+            Button(action: viewModel.getBrands, label: {
+                Image.init(systemName: "arrow.counterclockwise")
+            })
+        }
+    }
+    
     @StateObject var viewModel = BrandsListViewModel()
     var body: some View {
-        List(viewModel.brands, id: \.self) { brand in
-            Text(brand)
+        NavigationView {
+            VStack {
+            switch viewModel.state {
+            case .idle:
+                Color.clear.onAppear(perform: viewModel.getBrands)
+            case .loading:
+                ProgressView("Loading brands...")
+            case .failed(let error):
+                ErrorView(error: "Error '\(error)' found.")
+                Button("Reload", action: viewModel.getBrands)
+                .padding()
+                Spacer()
+            case .loaded(let brands):
+                List(brands, id: \.self) { brand in
+                    NavigationLink(
+                        destination: SneakersListView(viewModel: SneakerListViewModel(brand: brand)),
+                        label: {
+                            Text(brand)
+                        })
+                }.listStyle(PlainListStyle())
+            }
+            }.navigationTitle("Brands")
+            .navigationBarItems(trailing: ReloadItem(viewModel: viewModel))
         }
+
     }
 }
 

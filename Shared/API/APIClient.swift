@@ -15,8 +15,7 @@ struct APIClient {
         let response: URLResponse
     }
     
-    func run<T: Decodable>(_ request: URLRequest) -> AnyPublisher<Response<T>, Error> {
-        print(request)
+    func run<T: Decodable>(_ request: URLRequest) -> AnyPublisher<Response<T>, Error> {        
         return URLSession.shared
                   .dataTaskPublisher(for: request)
                   .tryMap { result -> Response<T> in

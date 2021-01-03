@@ -34,6 +34,14 @@
 		AA1BD3952598E5BB002C854D /* SneakerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3942598E5BB002C854D /* SneakerResponse.swift */; };
 		AA1BD3962598E5BB002C854D /* SneakerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3942598E5BB002C854D /* SneakerResponse.swift */; };
 		AA1BD39D2598F092002C854D /* KingfisherSwiftUIStatic in Frameworks */ = {isa = PBXBuildFile; productRef = AA1BD39C2598F092002C854D /* KingfisherSwiftUIStatic */; };
+		AA273CDC25A1FE0F001C8D5D /* FavouritesSneakers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA273CDB25A1FE0F001C8D5D /* FavouritesSneakers.swift */; };
+		AA273CDD25A1FE0F001C8D5D /* FavouritesSneakers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA273CDB25A1FE0F001C8D5D /* FavouritesSneakers.swift */; };
+		AA273CE325A202B9001C8D5D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA273CE225A202B9001C8D5D /* AboutView.swift */; };
+		AA273CE425A202B9001C8D5D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA273CE225A202B9001C8D5D /* AboutView.swift */; };
+		AA273CEB25A20A51001C8D5D /* AccesoryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA273CEA25A20A51001C8D5D /* AccesoryViews.swift */; };
+		AA273CEC25A20A51001C8D5D /* AccesoryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA273CEA25A20A51001C8D5D /* AccesoryViews.swift */; };
+		AA5FE71E25A0C99A0091F174 /* SneakerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5FE71D25A0C99A0091F174 /* SneakerDetailView.swift */; };
+		AA5FE71F25A0C99A0091F174 /* SneakerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5FE71D25A0C99A0091F174 /* SneakerDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +85,10 @@
 		AA1BD3822598E4BE002C854D /* SneakersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakersListView.swift; sourceTree = "<group>"; };
 		AA1BD38D2598E5A1002C854D /* SneakersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakersListViewModel.swift; sourceTree = "<group>"; };
 		AA1BD3942598E5BB002C854D /* SneakerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakerResponse.swift; sourceTree = "<group>"; };
+		AA273CDB25A1FE0F001C8D5D /* FavouritesSneakers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesSneakers.swift; sourceTree = "<group>"; };
+		AA273CE225A202B9001C8D5D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		AA273CEA25A20A51001C8D5D /* AccesoryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccesoryViews.swift; sourceTree = "<group>"; };
+		AA5FE71D25A0C99A0091F174 /* SneakerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakerDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +141,7 @@
 			children = (
 				AA1BD3552598DAA5002C854D /* API */,
 				AA1BD33E2598D8DD002C854D /* Features */,
+				AA273CE925A209A2001C8D5D /* Helpers */,
 				AA1BD2FD2598D8B3002C854D /* AppSneakersApp.swift */,
 				AA1BD2FE2598D8B3002C854D /* ContentView.swift */,
 				AA1BD2FF2598D8B4002C854D /* Assets.xcassets */,
@@ -188,6 +201,7 @@
 				AA1BD3812598E4B0002C854D /* Sneakers */,
 				AA1BD33F2598D8E9002C854D /* Brands */,
 				AA1BD37A2598E258002C854D /* TabBarView.swift */,
+				AA273CE225A202B9001C8D5D /* AboutView.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -215,10 +229,20 @@
 		AA1BD3812598E4B0002C854D /* Sneakers */ = {
 			isa = PBXGroup;
 			children = (
+				AA5FE71D25A0C99A0091F174 /* SneakerDetailView.swift */,
 				AA1BD3822598E4BE002C854D /* SneakersListView.swift */,
 				AA1BD38D2598E5A1002C854D /* SneakersListViewModel.swift */,
+				AA273CDB25A1FE0F001C8D5D /* FavouritesSneakers.swift */,
 			);
 			path = Sneakers;
+			sourceTree = "<group>";
+		};
+		AA273CE925A209A2001C8D5D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AA273CEA25A20A51001C8D5D /* AccesoryViews.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,8 +415,12 @@
 				AA1BD3742598DDF3002C854D /* Brands.swift in Sources */,
 				AA1BD3412598D8FE002C854D /* BrandsListView.swift in Sources */,
 				AA1BD3952598E5BB002C854D /* SneakerResponse.swift in Sources */,
+				AA273CDC25A1FE0F001C8D5D /* FavouritesSneakers.swift in Sources */,
+				AA273CE325A202B9001C8D5D /* AboutView.swift in Sources */,
 				AA1BD3572598DAB3002C854D /* APIClient.swift in Sources */,
 				AA1BD3622598DB6B002C854D /* BrandsListViewModel.swift in Sources */,
+				AA273CEB25A20A51001C8D5D /* AccesoryViews.swift in Sources */,
+				AA5FE71E25A0C99A0091F174 /* SneakerDetailView.swift in Sources */,
 				AA1BD38E2598E5A1002C854D /* SneakersListViewModel.swift in Sources */,
 				AA1BD3262598D8B4002C854D /* AppSneakersApp.swift in Sources */,
 			);
@@ -409,8 +437,12 @@
 				AA1BD3752598DDF3002C854D /* Brands.swift in Sources */,
 				AA1BD3482598DA69002C854D /* BrandsListView.swift in Sources */,
 				AA1BD3962598E5BB002C854D /* SneakerResponse.swift in Sources */,
+				AA273CDD25A1FE0F001C8D5D /* FavouritesSneakers.swift in Sources */,
+				AA273CE425A202B9001C8D5D /* AboutView.swift in Sources */,
 				AA1BD3582598DAB3002C854D /* APIClient.swift in Sources */,
 				AA1BD3632598DB6B002C854D /* BrandsListViewModel.swift in Sources */,
+				AA273CEC25A20A51001C8D5D /* AccesoryViews.swift in Sources */,
+				AA5FE71F25A0C99A0091F174 /* SneakerDetailView.swift in Sources */,
 				AA1BD38F2598E5A1002C854D /* SneakersListViewModel.swift in Sources */,
 				AA1BD3272598D8B4002C854D /* AppSneakersApp.swift in Sources */,
 			);
