@@ -54,6 +54,18 @@ struct SneakerDetailView: View {
     let sneaker: Sneaker
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
+            HStack {
+                Spacer()
+                Button(action: {
+                   
+                }, label: {
+                    Image.init(systemName: "heart.fill")
+                        .font(.largeTitle)
+                        .accentColor(.red)
+                        
+                })
+            }
+            
             if let image = sneaker.imgUrl {
                 KFImage(URL(string: image))
                     .resizable()

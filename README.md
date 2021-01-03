@@ -17,3 +17,9 @@ All the data are retrived from the following Sneakers API from TG4 Solutions (ht
     <td><img src="Screenshots/Screenshot2.png"></td>
   </tr>
  </table>
+
+
+ ## TBD
+ - [ ] Persistence in disk 
+ - [ ] Enhance Codable parsing 
+ - [ ] Search / Filters 
