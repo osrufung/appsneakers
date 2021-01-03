@@ -9,6 +9,14 @@ import SwiftUI
 
 class FavouriteSneakers: ObservableObject {
     @Published var favouriteSKUs: [String] = ["1012A885-400"]
+    
+    func toggle(_ sku: String) {        
+        if favouriteSKUs.contains(sku) {
+            favouriteSKUs.removeAll { $0 == sku }
+        } else {
+            favouriteSKUs.append(sku)
+        }
+    }
 }
 
 @main
