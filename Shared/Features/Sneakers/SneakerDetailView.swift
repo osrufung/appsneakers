@@ -48,7 +48,9 @@ struct SneakerImageView: View {
     }
 }
 
+
 struct SneakerDetailView: View {
+    @EnvironmentObject var favourites: FavouriteSneakers
     @GestureState var scale: CGFloat = 1
     @State var previewVisible: Bool = false
     let sneaker: Sneaker
@@ -57,11 +59,12 @@ struct SneakerDetailView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                   
+                    favourites.favouriteSKUs.append(sneaker.sku)
+                    print(favourites)
                 }, label: {
                     Image.init(systemName: "heart.fill")
                         .font(.largeTitle)
-                        .accentColor(.red)
+                        .accentColor(favourites.favouriteSKUs.contains(sneaker.sku) ? .red : .gray)
                         
                 })
             }

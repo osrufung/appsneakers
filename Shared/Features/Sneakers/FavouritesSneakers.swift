@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct FavouritesSneakers: View {
+    @EnvironmentObject var settings: FavouriteSneakers
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(settings.favouriteSKUs, id: \.self) { item in
+            Text("Item: \(item)")
+        }
+        .navigationTitle("Favourites")
+        
     }
 }
 
 struct FavouritesSneakers_Previews: PreviewProvider {
     static var previews: some View {
-        FavouritesSneakers()
+        NavigationView {
+            FavouritesSneakers().environmentObject(FavouriteSneakers())
+
+        }
     }
 }

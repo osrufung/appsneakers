@@ -7,11 +7,16 @@
 
 import SwiftUI
 
+class FavouriteSneakers: ObservableObject {
+    @Published var favouriteSKUs: [String] = ["1012A885-400"]
+}
+
 @main
 struct AppSneakersApp: App {
+    let favourites = FavouriteSneakers()
     var body: some Scene {
         WindowGroup {
-            TabBarView()
+            TabBarView().environmentObject(favourites)
         }
     }
 }
