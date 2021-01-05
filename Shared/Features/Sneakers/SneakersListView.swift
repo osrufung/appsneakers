@@ -42,7 +42,7 @@ struct SneakersListView: View {
                 .padding()
                 Spacer()
             case .loaded(let sneakers):
-                List(sneakers, id: \.self) { sneaker in
+                List(sneakers, id: \.id) { sneaker in
                 NavigationLink(
                     destination: SneakerDetailView(sneaker: sneaker),
                     label: {
