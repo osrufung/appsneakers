@@ -40,8 +40,12 @@
 		AA273CE425A202B9001C8D5D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA273CE225A202B9001C8D5D /* AboutView.swift */; };
 		AA273CEB25A20A51001C8D5D /* AccesoryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA273CEA25A20A51001C8D5D /* AccesoryViews.swift */; };
 		AA273CEC25A20A51001C8D5D /* AccesoryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA273CEA25A20A51001C8D5D /* AccesoryViews.swift */; };
+		AA280F3525AB52EE00F778BA /* sneakers.json in Resources */ = {isa = PBXBuildFile; fileRef = AA280F3425AB52EE00F778BA /* sneakers.json */; };
+		AA280F3625AB52EE00F778BA /* sneakers.json in Resources */ = {isa = PBXBuildFile; fileRef = AA280F3425AB52EE00F778BA /* sneakers.json */; };
+		AA280F3B25AB56B600F778BA /* sneakers.json in Resources */ = {isa = PBXBuildFile; fileRef = AA280F3425AB52EE00F778BA /* sneakers.json */; };
 		AA5FE71E25A0C99A0091F174 /* SneakerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5FE71D25A0C99A0091F174 /* SneakerDetailView.swift */; };
 		AA5FE71F25A0C99A0091F174 /* SneakerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5FE71D25A0C99A0091F174 /* SneakerDetailView.swift */; };
+		AAF7077325B481F7004AFB59 /* SafeCodable in Frameworks */ = {isa = PBXBuildFile; productRef = AAF7077225B481F7004AFB59 /* SafeCodable */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +92,7 @@
 		AA273CDB25A1FE0F001C8D5D /* FavouritesSneakers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesSneakers.swift; sourceTree = "<group>"; };
 		AA273CE225A202B9001C8D5D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		AA273CEA25A20A51001C8D5D /* AccesoryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccesoryViews.swift; sourceTree = "<group>"; };
+		AA280F3425AB52EE00F778BA /* sneakers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sneakers.json; sourceTree = "<group>"; };
 		AA5FE71D25A0C99A0091F174 /* SneakerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakerDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF7077325B481F7004AFB59 /* SafeCodable in Frameworks */,
 				AA1BD39D2598F092002C854D /* KingfisherSwiftUIStatic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +246,7 @@
 		AA273CE925A209A2001C8D5D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				AA280F3425AB52EE00F778BA /* sneakers.json */,
 				AA273CEA25A20A51001C8D5D /* AccesoryViews.swift */,
 			);
 			path = Helpers;
@@ -263,6 +270,7 @@
 			name = "AppSneakers (iOS)";
 			packageProductDependencies = (
 				AA1BD39C2598F092002C854D /* KingfisherSwiftUIStatic */,
+				AAF7077225B481F7004AFB59 /* SafeCodable */,
 			);
 			productName = "AppSneakers (iOS)";
 			productReference = AA1BD3042598D8B4002C854D /* AppSneakers.app */;
@@ -357,6 +365,7 @@
 			mainGroup = AA1BD2F72598D8B2002C854D;
 			packageReferences = (
 				AA1BD39B2598F092002C854D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				AAF7077125B481F7004AFB59 /* XCRemoteSwiftPackageReference "SafeCodable" */,
 			);
 			productRefGroup = AA1BD3052598D8B4002C854D /* Products */;
 			projectDirPath = "";
@@ -376,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA1BD32A2598D8B4002C854D /* Assets.xcassets in Resources */,
+				AA280F3525AB52EE00F778BA /* sneakers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA1BD32B2598D8B4002C854D /* Assets.xcassets in Resources */,
+				AA280F3625AB52EE00F778BA /* sneakers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA280F3B25AB56B600F778BA /* sneakers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,6 +844,14 @@
 				minimumVersion = 5.15.8;
 			};
 		};
+		AAF7077125B481F7004AFB59 /* XCRemoteSwiftPackageReference "SafeCodable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/osrufung/SafeCodable";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -839,6 +859,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA1BD39B2598F092002C854D /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = KingfisherSwiftUIStatic;
+		};
+		AAF7077225B481F7004AFB59 /* SafeCodable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAF7077125B481F7004AFB59 /* XCRemoteSwiftPackageReference "SafeCodable" */;
+			productName = SafeCodable;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

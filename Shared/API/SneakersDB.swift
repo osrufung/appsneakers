@@ -10,8 +10,17 @@ import Combine
 
 // Data From https://app.swaggerhub.com/apis-docs/tg4solutions/the-sneaker-database/1.0.0#/
 
+struct DecodingError: Error {}
+
 enum SneakersDB {
-    private static let apiConfig: APIConfig = APIConfig(apiClient: APIClient(),
+        
+    private static let apiClient: APIClient = {
+        let api = APIClient(logging: true)
+        api.decoder.dateDecodingStrategy = .iso8601(extended: true)
+        return api
+    }()
+    
+    private static let apiConfig: APIConfig = APIConfig(apiClient: apiClient,
                                                         baseURL: URL(string: "https://api.thesneakerdatabase.dev/")!)
     static let allBrands = BrandRequest(config: apiConfig)
     static let allSneakers = SneakerRequest(config: apiConfig, brand: nil)
@@ -66,4 +75,5 @@ struct SneakerRequest: NetworkRequest {
     
     typealias Resource = SneakerResponse
 }
+
 

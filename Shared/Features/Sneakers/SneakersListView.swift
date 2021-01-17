@@ -13,8 +13,8 @@ struct SneakerRowView: View {
     let sneaker: Sneaker
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(sneaker.name)
+        
+        HStack {
             if let image = sneaker.imgUrl {
                 KFImage(URL(string: image))
                     .resizable()
@@ -22,7 +22,12 @@ struct SneakerRowView: View {
                     .frame(width: 100, height: 100)
 
             }
-            Text(sneaker.priceFormatted)
+            VStack(alignment: .leading, spacing: 10) {
+                Text(sneaker.name)
+                    .font(.headline)                
+                Text(sneaker.priceFormatted)
+                    .font(.caption)                
+            }
         }
     }
 }
@@ -60,6 +65,7 @@ struct SneakersListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             SneakersListView(viewModel: SneakerListViewModel(brand: "Nike"))
+                .environmentObject(FavouriteSneakers())
         }
     }
 }

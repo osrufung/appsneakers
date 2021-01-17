@@ -6,33 +6,7 @@
 //
 
 import Foundation
-
-protocol Convertible {
-    associatedtype Destination: Decodable
-    var translated: Destination? { get }
-}
-
-struct Safe<Base, Fallback: Convertible&Decodable>: Decodable where Fallback.Destination == Base {
-    let value: Base?
-    
-    init(from decoder: Decoder)  {
-        let container = try? decoder.singleValueContainer()
-        if let base = try? container?.decode(Base.self) {
-            value = base
-        } else if let fallback = try? container?.decode(Fallback.self), let converted = fallback.translated {
-            value = converted
-        } else {
-            value = nil
-        }
-        
-    }
-}
-
-extension String: Convertible {
-    var translated: Int? {
-        return Int(self)
-    }
-}
+import SafeCodable
 
 struct SneakerResponse: Decodable {
     let count: Int
@@ -44,23 +18,47 @@ struct Sneaker: Decodable, Identifiable {
     let sku: String
     let brand: String
     let name: String
+    let gender: String
+    let colorway: String
     let story: String?
     let releaseYear: Int
+    let releaseDate: Date?
     let imgUrl: String
     let retailPrice: Safe<Int,String>?
-    var priceFormatted: String {
-        guard let price = retailPrice?.value else { return "" }
-        return "$ \(price)"
-    }
-   
+    
 }
 
 extension Sneaker {
-    static let sample = Sneaker(sku: "DJ0675-200",
-                                brand: "Nike",
-                                name: "Nike Dunk",
-                                story: "Nike Dunk High Sail Football Grey",
-                                releaseYear: 2001,
-                                imgUrl: "https://stockx.imgix.net/images/Nike-Dunk-High-Sail-Football-Grey-W.png?fit=fill&bg=FFFFFF&w=140&h=100&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1609367425",
-                                retailPrice: nil)
+    
+    static var numberFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = "USD"
+        return formatter
+    }
+    
+    var dateFormatted: String? {
+        guard let date = releaseDate else { return nil }
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = .medium
+        return formatter.string(from: date)
+    }
+    
+    var priceFormatted: String {
+        guard let price = retailPrice?.value else { return "" }        
+        return Sneaker.numberFormatter.string(from: NSNumber(integerLiteral: price)) ?? ""
+    }
+}
+
+
+extension Sneaker {
+    static let sample: Sneaker = {
+        let decoder = JSONDecoder()
+        let path = Bundle.main.path(forResource: "sneakers", ofType: "json")!
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path))
+        let response = try? decoder.decode(SneakerResponse.self, from: data!)
+        return (response?.results.first)!
+    }()
+
 }

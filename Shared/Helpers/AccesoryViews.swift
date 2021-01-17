@@ -18,9 +18,28 @@ struct ErrorView: View {
     }
 }
 
+
+
+struct CellView: View {
+    let value: String
+    let title: String
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(value)
+                .font(.headline)
+            Text(title)
+                .font(.subheadline)
+        }
+    }
+}
+
 struct AccesoryViews_Previews: PreviewProvider {
     static var previews: some View {
-        ErrorView(error: "Something failed :(")
-            .preferredColorScheme(.light)
+        Group {
+            ErrorView(error: "Something failed :(")
+                .preferredColorScheme(.light)
+            CellView(value: "Value content", title: "Title")
+
+        }
     }
 }

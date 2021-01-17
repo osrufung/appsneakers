@@ -22,8 +22,15 @@ struct TabBarView: View {
     }
 }
 
+let favourites = FavouriteSneakers()
+
 struct TabBarView_Previews: PreviewProvider {
+    
     static var previews: some View {
         TabBarView()
+            .previewLayout(.fixed(width: 1024, height: 768))
+            .environmentObject(favourites)
+            .environment(\.horizontalSizeClass, .regular)
+            .environment(\.verticalSizeClass, .compact)
     }
 }
