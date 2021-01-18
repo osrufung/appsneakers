@@ -63,18 +63,6 @@ struct SneakerImagePreviewView: View {
                         previewVisible.toggle()
                     }
             }
-            
-            HStack {
-                Spacer()
-                Button(action: {
-                    settings.toggle(sneaker.sku)
-                }, label: {
-                    Image.init(systemName: "heart.fill")
-                        .font(.largeTitle)
-                        .accentColor(settings.favouriteSKUs.contains(sneaker.sku) ? .red : .gray)
-                        
-                })
-            }
         }
     }
 }
@@ -103,6 +91,17 @@ struct SneakerDetailView: View {
             }
             Section(header: Text("Shop")) {
                 Text("link")
+            }
+            Section(header: Text("Actions")) {
+                Button(action: {
+                    settings.toggle(sneaker.sku)
+                }, label: {
+                    if settings.favouriteSKUs.contains(sneaker.sku) {
+                        Text("Remove from favourites")
+                    } else {
+                        Text("Add to favourites")
+                    }        
+                })
             }
         }
         .navigationTitle(sneaker.name)
