@@ -22,8 +22,8 @@ struct APIClient {
                   .dataTaskPublisher(for: request)
                   .tryMap { result -> Response<T> in
                     if logging {
-                        let response = String(data: result.data, encoding: .utf8)
-                        print("Response: \(String(describing: response))")
+                        let response = String(data: result.data, encoding: .utf8)!
+                        print("Response: \(String(response))")
                     }
                     let value = try decoder.decode(T.self, from: result.data)                      
                     return Response(value: value, response: result.response)

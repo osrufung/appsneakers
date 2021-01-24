@@ -31,8 +31,8 @@
 		AA1BD3842598E4BE002C854D /* SneakersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3822598E4BE002C854D /* SneakersListView.swift */; };
 		AA1BD38E2598E5A1002C854D /* SneakersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD38D2598E5A1002C854D /* SneakersListViewModel.swift */; };
 		AA1BD38F2598E5A1002C854D /* SneakersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD38D2598E5A1002C854D /* SneakersListViewModel.swift */; };
-		AA1BD3952598E5BB002C854D /* SneakerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3942598E5BB002C854D /* SneakerResponse.swift */; };
-		AA1BD3962598E5BB002C854D /* SneakerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3942598E5BB002C854D /* SneakerResponse.swift */; };
+		AA1BD3952598E5BB002C854D /* Sneaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3942598E5BB002C854D /* Sneaker.swift */; };
+		AA1BD3962598E5BB002C854D /* Sneaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3942598E5BB002C854D /* Sneaker.swift */; };
 		AA1BD39D2598F092002C854D /* KingfisherSwiftUIStatic in Frameworks */ = {isa = PBXBuildFile; productRef = AA1BD39C2598F092002C854D /* KingfisherSwiftUIStatic */; };
 		AA273CDC25A1FE0F001C8D5D /* FavouritesSneakers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA273CDB25A1FE0F001C8D5D /* FavouritesSneakers.swift */; };
 		AA273CDD25A1FE0F001C8D5D /* FavouritesSneakers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA273CDB25A1FE0F001C8D5D /* FavouritesSneakers.swift */; };
@@ -88,7 +88,7 @@
 		AA1BD37A2598E258002C854D /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		AA1BD3822598E4BE002C854D /* SneakersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakersListView.swift; sourceTree = "<group>"; };
 		AA1BD38D2598E5A1002C854D /* SneakersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakersListViewModel.swift; sourceTree = "<group>"; };
-		AA1BD3942598E5BB002C854D /* SneakerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SneakerResponse.swift; sourceTree = "<group>"; };
+		AA1BD3942598E5BB002C854D /* Sneaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sneaker.swift; sourceTree = "<group>"; };
 		AA273CDB25A1FE0F001C8D5D /* FavouritesSneakers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesSneakers.swift; sourceTree = "<group>"; };
 		AA273CE225A202B9001C8D5D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		AA273CEA25A20A51001C8D5D /* AccesoryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccesoryViews.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 				AA1BD3562598DAB3002C854D /* APIClient.swift */,
 				AA1BD36C2598DD2C002C854D /* SneakersDB.swift */,
 				AA1BD3732598DDF3002C854D /* Brands.swift */,
-				AA1BD3942598E5BB002C854D /* SneakerResponse.swift */,
+				AA1BD3942598E5BB002C854D /* Sneaker.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -426,7 +426,7 @@
 				AA1BD37B2598E258002C854D /* TabBarView.swift in Sources */,
 				AA1BD3742598DDF3002C854D /* Brands.swift in Sources */,
 				AA1BD3412598D8FE002C854D /* BrandsListView.swift in Sources */,
-				AA1BD3952598E5BB002C854D /* SneakerResponse.swift in Sources */,
+				AA1BD3952598E5BB002C854D /* Sneaker.swift in Sources */,
 				AA273CDC25A1FE0F001C8D5D /* FavouritesSneakers.swift in Sources */,
 				AA273CE325A202B9001C8D5D /* AboutView.swift in Sources */,
 				AA1BD3572598DAB3002C854D /* APIClient.swift in Sources */,
@@ -448,7 +448,7 @@
 				AA1BD37C2598E258002C854D /* TabBarView.swift in Sources */,
 				AA1BD3752598DDF3002C854D /* Brands.swift in Sources */,
 				AA1BD3482598DA69002C854D /* BrandsListView.swift in Sources */,
-				AA1BD3962598E5BB002C854D /* SneakerResponse.swift in Sources */,
+				AA1BD3962598E5BB002C854D /* Sneaker.swift in Sources */,
 				AA273CDD25A1FE0F001C8D5D /* FavouritesSneakers.swift in Sources */,
 				AA273CE425A202B9001C8D5D /* AboutView.swift in Sources */,
 				AA1BD3582598DAB3002C854D /* APIClient.swift in Sources */,
@@ -848,8 +848,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/osrufung/SafeCodable";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = exactVersion;
+				version = 0.0.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

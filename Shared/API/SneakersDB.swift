@@ -66,7 +66,7 @@ struct SneakerRequest: NetworkRequest {
         guard var components = URLComponents(url: config.baseURL.appendingPathComponent("v2/sneakers"), resolvingAgainstBaseURL: true) else {
             fatalError()
         }
-        components.queryItems = [URLQueryItem(name: "limit", value: "100")]
+        components.queryItems = [URLQueryItem(name: "limit", value: "20")]
         if let brand = brand {
             components.queryItems?.append(URLQueryItem(name: "brand", value: brand))
         }

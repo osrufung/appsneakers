@@ -24,7 +24,8 @@ struct AppSneakersApp: App {
     let favourites = FavouriteSneakers()
     var body: some Scene {
         WindowGroup {
-            TabBarView().environmentObject(favourites)
+            TabBarView()
+                .environmentObject(favourites)
         }
     }
 }

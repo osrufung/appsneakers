@@ -25,11 +25,15 @@ struct Sneaker: Decodable, Identifiable {
     let releaseDate: Date?
     let imgUrl: String
     let retailPrice: Safe<Int,String>?
+    let links: String?
     
 }
 
 extension Sneaker {
-    
+    struct Shop: Hashable {
+        let name: String
+        let link: URL
+    }
     static var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -48,6 +52,19 @@ extension Sneaker {
     var priceFormatted: String {
         guard let price = retailPrice?.value else { return "" }        
         return Sneaker.numberFormatter.string(from: NSNumber(integerLiteral: price)) ?? ""
+    }
+    
+    var buyLinks: [Shop] {
+        guard let links = links?
+                .trimmingCharacters(in: .init(charactersIn: "[]"))
+                .split(separator: ",") else { return [] }
+        
+        let shops: [Shop] = links.compactMap { item in
+            guard let url = URL(string: item.trimmingCharacters(in: .whitespaces)) else { return nil }
+            return Shop(name: url.host ?? "Unknown", link: url)
+        }
+            
+        return shops
     }
 }
 

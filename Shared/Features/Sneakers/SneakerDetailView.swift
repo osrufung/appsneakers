@@ -89,8 +89,12 @@ struct SneakerDetailView: View {
                     Text(sneaker.story!)
                 }
             }
-            Section(header: Text("Shop")) {
-                Text("link")
+            if let shops = sneaker.buyLinks {
+                Section(header: Text("Shop")) {
+                    ForEach(shops, id: \.self) { shop in
+                        Link("Buy from \(shop.name)", destination: shop.link)
+                    }
+                }
             }
             Section(header: Text("Actions")) {
                 Button(action: {
@@ -121,7 +125,8 @@ struct SneakerDetailView_Previews: PreviewProvider {
                           releaseYear: 2010,
                           releaseDate: Date(),
                           imgUrl: "https://image.goat.com/750/attachments/product_template_pictures/images/047/923/713/original/1192A193_001.png.png",
-                          retailPrice: nil)
+                          retailPrice: nil,
+                          links: "[https://flightclub.com/lebron-18-ps-graffiti-ct4710-900]")
     static var previews: some View {
         NavigationView {
             SneakerDetailView(sneaker: sneaker)
