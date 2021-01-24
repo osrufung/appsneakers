@@ -23,9 +23,9 @@ enum SneakersDB {
     private static let apiConfig: APIConfig = APIConfig(apiClient: apiClient,
                                                         baseURL: URL(string: "https://api.thesneakerdatabase.dev/")!)
     static let allBrands = BrandRequest(config: apiConfig)
-    static let allSneakers = SneakerRequest(config: apiConfig, brand: nil)
-    static func sneakers(for brand: String) -> SneakerRequest {
-        return SneakerRequest(config: apiConfig, brand: brand)
+    static let allSneakers = SneakerRequest(config: apiConfig, brand: nil, page: 0)
+    static func sneakers(for brand: String, page: Int = 0) -> SneakerRequest {
+        return SneakerRequest(config: apiConfig, brand: brand, page: page)
     }
 }
 
@@ -60,13 +60,16 @@ struct BrandRequest: NetworkRequest {
 }
 
 struct SneakerRequest: NetworkRequest {
+    static let pageSize = 20
     let config: APIConfig
     let brand: String?
+    let page: Int
     func request(base: URL) -> URLRequest {
         guard var components = URLComponents(url: config.baseURL.appendingPathComponent("v2/sneakers"), resolvingAgainstBaseURL: true) else {
             fatalError()
         }
-        components.queryItems = [URLQueryItem(name: "limit", value: "20")]
+        components.queryItems = [URLQueryItem(name: "limit", value: String(SneakerRequest.pageSize)),
+                                 URLQueryItem(name: "page", value: String(page))]
         if let brand = brand {
             components.queryItems?.append(URLQueryItem(name: "brand", value: brand))
         }

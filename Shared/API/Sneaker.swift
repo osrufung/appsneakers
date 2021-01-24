@@ -13,7 +13,11 @@ struct SneakerResponse: Decodable {
     let results: [Sneaker]
 }
 
-struct Sneaker: Decodable, Identifiable {
+struct Sneaker: Decodable, Identifiable, Equatable {
+    static func == (lhs: Sneaker, rhs: Sneaker) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     var id: String { sku }
     let sku: String
     let brand: String

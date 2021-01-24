@@ -17,13 +17,16 @@ struct APIClient {
     
     let decoder = JSONDecoder()
     let logging: Bool
-    func run<T: Decodable>(_ request: URLRequest) -> AnyPublisher<Response<T>, Error> {        
+    func run<T: Decodable>(_ request: URLRequest) -> AnyPublisher<Response<T>, Error> {
+        if logging {
+            print("REQUEST >>> \(request.url?.absoluteString ?? "")")
+        }
         return URLSession.shared
                   .dataTaskPublisher(for: request)
                   .tryMap { result -> Response<T> in
                     if logging {
                         let response = String(data: result.data, encoding: .utf8)!
-                        print("Response: \(String(response))")
+                        print("RESPONSE <<< \(String(response))")
                     }
                     let value = try decoder.decode(T.self, from: result.data)                      
                     return Response(value: value, response: result.response)

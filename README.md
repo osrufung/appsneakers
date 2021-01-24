@@ -22,5 +22,6 @@ All the data is retrieved from the following Sneakers API from TG4 Solutions (ht
  ## TBD
  - [ ] Persistence in disk 
  - [X] Enhance Codable parsing 
+ - [X] Infinite scroll (pagination) 
  - [ ] Open detail from favourite list item
  - [ ] Search / Filters 

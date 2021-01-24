@@ -38,7 +38,8 @@ struct SneakersListView: View {
         VStack {
             switch viewModel.state {
             case .idle:
-                Color.clear.onAppear(perform: viewModel.getSneakers)
+                Color.clear
+                    .onAppear(perform: viewModel.getSneakers)
             case .loading:
                 ProgressView("Loading sneakers for '\(viewModel.brand)'...")
             case .failed(let error):
@@ -46,14 +47,27 @@ struct SneakersListView: View {
                 Button("Reload", action: viewModel.getSneakers)
                 .padding()
                 Spacer()
-            case .loaded(let sneakers):
+
+            case .loaded(let sneakers), .loadingMorePages(let sneakers):
                 List(sneakers, id: \.id) { sneaker in
                 NavigationLink(
                     destination: SneakerDetailView(sneaker: sneaker),
                     label: {
                         SneakerRowView(sneaker: sneaker)
+                            .onAppear {
+                                viewModel.getMoreSneakersIfNeeded(item: sneaker)
+                            }
                     })
                 }.listStyle(PlainListStyle())
+                if case .loadingMorePages(_) = viewModel.state {
+                    Text("Loading page \(viewModel.pageIndicator)")
+                        .padding()
+                        .background(Color(.systemGray))
+                        .opacity(0.7)
+                        .font(.subheadline)
+                        .cornerRadius(10)
+                        .padding()                        
+                }
             }
         }
         .navigationBarTitle(viewModel.brand, displayMode: .inline)
@@ -67,5 +81,6 @@ struct SneakersListView_Previews: PreviewProvider {
             SneakersListView(viewModel: SneakerListViewModel(brand: "Nike"))
                 .environmentObject(FavouriteSneakers())
         }
+        .preferredColorScheme(.dark)
     }
 }
