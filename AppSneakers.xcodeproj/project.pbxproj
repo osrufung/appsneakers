@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0E855625C6146E00CBE507 /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AA0E855525C6146E00CBE507 /* KingfisherSwiftUI */; };
+		AA0E855C25C6148800CBE507 /* SafeCodable in Frameworks */ = {isa = PBXBuildFile; productRef = AA0E855B25C6148800CBE507 /* SafeCodable */; };
 		AA1BD3192598D8B4002C854D /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3182598D8B4002C854D /* Tests_iOS.swift */; };
 		AA1BD3242598D8B4002C854D /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD3232598D8B4002C854D /* Tests_macOS.swift */; };
 		AA1BD3262598D8B4002C854D /* AppSneakersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1BD2FD2598D8B3002C854D /* AppSneakersApp.swift */; };
@@ -110,6 +112,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0E855C25C6148800CBE507 /* SafeCodable in Frameworks */,
+				AA0E855625C6146E00CBE507 /* KingfisherSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +134,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA0E855425C6146E00CBE507 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AA1BD2F72598D8B2002C854D = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +150,7 @@
 				AA1BD3172598D8B4002C854D /* Tests iOS */,
 				AA1BD3222598D8B4002C854D /* Tests macOS */,
 				AA1BD3052598D8B4002C854D /* Products */,
+				AA0E855425C6146E00CBE507 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -289,6 +301,10 @@
 			dependencies = (
 			);
 			name = "AppSneakers (macOS)";
+			packageProductDependencies = (
+				AA0E855525C6146E00CBE507 /* KingfisherSwiftUI */,
+				AA0E855B25C6148800CBE507 /* SafeCodable */,
+			);
 			productName = "AppSneakers (macOS)";
 			productReference = AA1BD30C2598D8B4002C854D /* AppSneakers.app */;
 			productType = "com.apple.product-type.application";
@@ -855,6 +871,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AA0E855525C6146E00CBE507 /* KingfisherSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA1BD39B2598F092002C854D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = KingfisherSwiftUI;
+		};
+		AA0E855B25C6148800CBE507 /* SafeCodable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAF7077125B481F7004AFB59 /* XCRemoteSwiftPackageReference "SafeCodable" */;
+			productName = SafeCodable;
+		};
 		AA1BD39C2598F092002C854D /* KingfisherSwiftUIStatic */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AA1BD39B2598F092002C854D /* XCRemoteSwiftPackageReference "Kingfisher" */;
