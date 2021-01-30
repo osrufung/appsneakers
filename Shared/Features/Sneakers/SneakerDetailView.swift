@@ -109,7 +109,8 @@ struct SneakerDetailView: View {
             }
         }
         .navigationTitle(sneaker.name)
-        .fullScreenCover(isPresented: $previewVisible, content: {
+        
+        .sheet(isPresented: $previewVisible, content: {
             SneakerFullSizeImageView(imageURL: sneaker.imgUrl)
         })
     }
@@ -131,8 +132,8 @@ struct SneakerDetailView_Previews: PreviewProvider {
         NavigationView {
             SneakerDetailView(sneaker: sneaker)
                 .environmentObject(FavouriteSneakers())
-                .navigationBarTitleDisplayMode(.inline)
 
         }
+        
     }
 }

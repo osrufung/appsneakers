@@ -30,7 +30,5 @@ struct TabBarView_Previews: PreviewProvider {
         TabBarView()
             .previewLayout(.fixed(width: 1024, height: 768))
             .environmentObject(favourites)
-            .environment(\.horizontalSizeClass, .regular)
-            .environment(\.verticalSizeClass, .compact)
     }
 }

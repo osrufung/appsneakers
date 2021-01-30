@@ -58,7 +58,7 @@ struct SneakersListView: View {
                                 viewModel.getMoreSneakersIfNeeded(item: sneaker)
                             }
                     })
-                }.listStyle(PlainListStyle())
+                }
                 if case .loadingMorePages(_) = viewModel.state {
                     Text("Loading page \(viewModel.pageIndicator)")
                         .padding()
@@ -69,9 +69,8 @@ struct SneakersListView: View {
                         .padding()                        
                 }
             }
-        }
-        .navigationBarTitle(viewModel.brand, displayMode: .inline)
-
+        }        
+        .navigationTitle(viewModel.brand)
     }
 }
 
@@ -80,7 +79,6 @@ struct SneakersListView_Previews: PreviewProvider {
         NavigationView {
             SneakersListView(viewModel: SneakerListViewModel(brand: "Nike"))
                 .environmentObject(FavouriteSneakers())
-        }
-        .preferredColorScheme(.dark)
+        }        
     }
 }

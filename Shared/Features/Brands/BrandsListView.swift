@@ -42,7 +42,9 @@ struct BrandsListView: View {
                 }.listStyle(PlainListStyle())
             }
             }.navigationTitle("Brands")
-            .navigationBarItems(trailing: ReloadItem(viewModel: viewModel))
+            .toolbar(content: {
+                ReloadItem(viewModel: viewModel)
+            })
         }
 
     }
