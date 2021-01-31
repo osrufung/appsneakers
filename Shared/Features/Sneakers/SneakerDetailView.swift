@@ -46,6 +46,7 @@ struct SneakerFullSizeImageView: View {
                 .padding()
             }
         }
+        .frame(minWidth: 600, minHeight: 600)
     }
 }
 
