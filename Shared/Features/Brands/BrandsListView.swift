@@ -42,11 +42,17 @@ struct BrandsListView: View {
                 }.listStyle(PlainListStyle())
             }
             }.navigationTitle("Brands")
+            .frame(minWidth: 200)
             .toolbar(content: {
                 ReloadItem(viewModel: viewModel)
             })
+            
+            #if os(macOS)
+            Text("Choose a brand")
+                .frame(minWidth: 400)
+            Text("Choose a sneake")
+            #endif
         }
-
     }
 }
 

@@ -53,17 +53,13 @@ struct SneakerImagePreviewView: View {
     @Binding var previewVisible: Bool
     @EnvironmentObject var settings: FavouriteSneakers
     var body: some View {
-        VStack(spacing: 20) {
-    
-            if let image = sneaker.imgUrl {
-                KFImage(URL(string: image))
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .onTapGesture {
-                        previewVisible.toggle()
-                    }
+        KFImage(URL(string: sneaker.imgUrl))
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .clipped()
+            .onTapGesture {
+                previewVisible.toggle()
             }
-        }
     }
 }
 
@@ -129,11 +125,12 @@ struct SneakerDetailView_Previews: PreviewProvider {
                           retailPrice: nil,
                           links: "[https://flightclub.com/lebron-18-ps-graffiti-ct4710-900]")
     static var previews: some View {
-        NavigationView {
-            SneakerDetailView(sneaker: sneaker)
+        
+        SneakerDetailView(sneaker: sneaker)
+            .frame(width: 400.0, height: 800)
                 .environmentObject(FavouriteSneakers())
 
-        }
+        
         
     }
 }
