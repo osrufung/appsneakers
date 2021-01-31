@@ -5,6 +5,7 @@ A simple Sneakers favourite list SwiftUI App to demo Combine + basic view buildi
 All the data is retrieved from the following Sneakers API from TG4 Solutions (https://tg4.solutions/the-sneaker-database-test-endpoints-available/)
 
 
+## iOS version
 <table>
   <tr>
     <td>Brands</td>
@@ -18,9 +19,19 @@ All the data is retrieved from the following Sneakers API from TG4 Solutions (ht
   </tr>
  </table>
 
+## macOS version
+<table>
+  <tr>
+    <td>General view</td>
+  </tr>
+  <tr>
+    <td><img src="Screenshots/ScreenshotMac1.png"></td>
+  </tr>
+ </table>
 
  ## TBD
  - [ ] Persistence in disk 
+ - [X] macOS version
  - [X] Enhance Codable parsing 
  - [X] Display Shopping links in detail view
  - [X] Infinite scroll (pagination) 
