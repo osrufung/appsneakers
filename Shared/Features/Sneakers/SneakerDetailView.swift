@@ -9,41 +9,42 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct SneakerFullSizeImageView: View {
-    @GestureState var scale: CGFloat = 1.0
+    @GestureState var scale: CGFloat = 2
     @Environment(\.presentationMode) var presentationMode
     let imageURL: String?
     var body: some View {
-        ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
-            VStack {
-                Spacer()
-            if let image = imageURL {
-                KFImage(URL(string: image))
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: .infinity, height: .infinity)
-                    .rotationEffect(.degrees(-90))
-                    .scaleEffect(scale)
+        GeometryReader { geo in
+            ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
+                VStack {
+                    Spacer()
+                if let image = imageURL {
+                    KFImage(URL(string: image))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: geo.size.width, height: geo.size.height)
+                        .rotationEffect(.degrees(-90))
+                        .scaleEffect(scale)
                             .gesture(MagnificationGesture()
                                 .updating($scale, body: { (value, scale, trans) in
                                     scale = value.magnitude
-                                })
-                        )
-                    
-                    .edgesIgnoringSafeArea(.all)
-                    .onTapGesture {
-                            presentationMode.wrappedValue.dismiss()
-                           }
-                    
+                                }))
+                        
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                                presentationMode.wrappedValue.dismiss()
+                               }
+                        
+                    }
+                    Spacer()
                 }
-                Spacer()
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Image.init(systemName: "xmark.circle.fill")
+                        .font(.largeTitle)
+                })
+                .padding()
             }
-            Button(action: {
-                presentationMode.wrappedValue.dismiss()
-            }, label: {
-                Image.init(systemName: "xmark.circle.fill")
-                    .font(.largeTitle)
-            })
-            .padding()
         }
     }
 }
@@ -56,7 +57,6 @@ struct SneakerImagePreviewView: View {
         KFImage(URL(string: sneaker.imgUrl))
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .clipped()
             .onTapGesture {
                 previewVisible.toggle()
             }
@@ -71,41 +71,51 @@ struct SneakerDetailView: View {
     
     let sneaker: Sneaker
     var body: some View {
-        List {
-            SneakerImagePreviewView(sneaker: sneaker, previewVisible: $previewVisible)
-            Section(header: Text("Info")) {
-                CellView(value: sneaker.sku, title: "SKU")
-                CellView(value: sneaker.brand, title: "Brand")
-                CellView(value: sneaker.gender, title: "gender")
-                CellView(value: sneaker.colorway, title: "colorway")
-                CellView(value: sneaker.dateFormatted ?? "-", title: "release Date")
-            }
-            if sneaker.story?.isEmpty == false {
-                Section(header: Text("Story")) {
-                    Text(sneaker.story!)
+        GeometryReader { geo in
+            List {
+                Section(header: Text("")) {
+                    Text(sneaker.name)
+                        .font(.largeTitle)
+                    SneakerImagePreviewView(sneaker: sneaker, previewVisible: $previewVisible)
+                        .frame(width: geo.size.width, height: 200)
+                    Text("press to show in full size")
+                        .font(.footnote)
                 }
-            }
-            if let shops = sneaker.buyLinks {
-                Section(header: Text("Shop")) {
-                    ForEach(shops, id: \.self) { shop in
-                        Link("Buy from \(shop.name)", destination: shop.link)
+  
+                Section(header: Text("Info")) {
+                    CellView(value: sneaker.sku, title: "SKU")
+                    CellView(value: sneaker.brand, title: "Brand")
+                    CellView(value: sneaker.gender, title: "gender")
+                    CellView(value: sneaker.colorway, title: "colorway")
+                    CellView(value: sneaker.dateFormatted ?? "-", title: "release Date")
+                }
+                if sneaker.story?.isEmpty == false {
+                    Section(header: Text("Story")) {
+                        Text(sneaker.story!)
                     }
                 }
-            }
-            Section(header: Text("Actions")) {
-                Button(action: {
-                    settings.toggle(sneaker.sku)
-                }, label: {
-                    if settings.favouriteSKUs.contains(sneaker.sku) {
-                        Text("Remove from favourites")
-                    } else {
-                        Text("Add to favourites")
-                    }        
-                })
+                if let shops = sneaker.buyLinks {
+                    Section(header: Text("Shop")) {
+                        ForEach(shops, id: \.self) { shop in
+                            Link("Buy from \(shop.name)", destination: shop.link)
+                        }
+                    }
+                }
+                Section(header: Text("Actions")) {
+                    Button(action: {
+                        settings.toggle(sneaker.sku)
+                    }, label: {
+                        if settings.favouriteSKUs.contains(sneaker.sku) {
+                            Text("Remove from favourites")
+                        } else {
+                            Text("Add to favourites")
+                        }
+                    })
+                }
             }
         }
-        .navigationTitle(sneaker.name)
-        
+
+        .navigationTitle(sneaker.sku)
         .sheet(isPresented: $previewVisible, content: {
             SneakerFullSizeImageView(imageURL: sneaker.imgUrl)
         })
@@ -125,12 +135,7 @@ struct SneakerDetailView_Previews: PreviewProvider {
                           retailPrice: nil,
                           links: "[https://flightclub.com/lebron-18-ps-graffiti-ct4710-900]")
     static var previews: some View {
-        
-        SneakerDetailView(sneaker: sneaker)
-            .frame(width: 400.0, height: 800)
+            SneakerDetailView(sneaker: sneaker)
                 .environmentObject(FavouriteSneakers())
-
-        
-        
     }
 }

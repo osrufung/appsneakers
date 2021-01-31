@@ -50,7 +50,7 @@ struct BrandsListView: View {
             #if os(macOS)
             Text("Choose a brand")
                 .frame(minWidth: 400)
-            Text("Choose a sneake")
+            Text("")
             #endif
         }
     }
